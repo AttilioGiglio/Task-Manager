@@ -1,17 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 const Login = () => {
-    const [login, setlogin] = useState({
+    const [login, setLogin] = useState({
         email: '',
         password: ''
     })
 
+    // registro de cada cambio en el valor del input en la property respectiva del obj login
     const onChange = (e) => {
-        // useState({e.target.name:})
+        setLogin({...login, [e.target.name]:e.target.value})
     }
 
+    // registro del usuario cuando inicia sesion
     const onSubmit = (e) => {
-        e.preventDefault(e)
+        e.preventDefault();
+        
+
+        // validacion de campos vacios
+        // pasarlo al action del context
     }
 
     const { email, password } = login;
@@ -50,9 +57,18 @@ const Login = () => {
                     </div>
 
                     <div className="campo-form">
-                        <input type="submit" className="btn btn-primario btn-block" value="Iniciar Sesión" />
+                        <input 
+                        type="submit" 
+                        className="btn btn-primario btn-block" 
+                        value="Iniciar Sesión" 
+                        />
                     </div>
                 </form>
+                <Link 
+                to={'/nueva-cuenta'} 
+                className='enlace-cuenta'> 
+                Obtener Cuenta
+                </Link>
             </div>
         </div>
     )
