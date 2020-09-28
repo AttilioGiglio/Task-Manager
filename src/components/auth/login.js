@@ -38,7 +38,7 @@ const Login = () => {
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="Tu Email"
+                            placeholder="Tu email"
                             value={email}
                             onChange={onChange}
                         />
@@ -50,7 +50,7 @@ const Login = () => {
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="Tu Password"
+                            placeholder="Tu password"
                             value={password}
                             onChange={onChange}
                         />
