@@ -6,7 +6,7 @@ import ProyectoReducer from './proyecto_reducer';
 const ProyectoState = props => {
  
     const initialState = {
-            formulario: false
+            formulario: true
     }
     
     // dispatch para ejecutar acciones 
