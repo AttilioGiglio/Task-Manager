@@ -1,4 +1,4 @@
-import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO } from '../types/constants';
+import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO } from '../types/constants';
 
 export default (state, action) => {
 
@@ -17,7 +17,13 @@ export default (state, action) => {
             return {
                 ...state,
                 proyectos: [...state.proyectos, action.payload],
-                formulario:false
+                formulario: false,
+                errorFormulario: false
+            }
+        case VALIDAR_FORMULARIO:
+            return {
+                ...state,
+                errorFormulario: true
             }
     }
     console.log(state)
