@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Tarea from './tarea'
+import ProyectoContext from '../../context/proyecto_context';
 
 const ListadoTareas = () => {
 
@@ -10,9 +11,17 @@ const ListadoTareas = () => {
         { nombre: 'Elegir hosting', estado: false }
     ]
 
+    // extraer proyectos de state inicial
+    const proyectoContext = useContext(ProyectoContext);
+    const { proyecto} = proyectoContext;
+    // si no hay proyecto seleccionado
+    if(!proyecto) return <h2>Selecciona un proyecto</h2>;
+    // array destructuring para extraer el proyecto actual
+    const [proyectoActual] = proyecto;
+
     return (
         <Fragment>
-            <h2>Proyecto: Tienda virtual</h2>
+            <h2>Proyecto: {proyectoActual.nombre}</h2>
             <ul className='listado-tareas'>
                 {
                     tareas.length === 0
