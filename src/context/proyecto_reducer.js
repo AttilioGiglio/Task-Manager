@@ -1,6 +1,13 @@
-export default (state,action) => {
+import { FORMULARIO_PROYECTO } from '../types/constants';
+
+export default (state, action) => {
+
     switch(action.type){
-        default:
-            return state;
+        case FORMULARIO_PROYECTO:
+            return { 
+                ...state,
+                formulario: true
+            }
     }
+    console.log(state)
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ListadoProyectos from '../proyectos/listadoproyectos';
 import NuevoProyecto from '../proyectos/nuevo_proyecto';
-
+ 
 const Sidebar = () => {
     return(
         <aside>
