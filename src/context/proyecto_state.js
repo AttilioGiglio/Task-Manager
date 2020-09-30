@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import ProyectoContext from './proyecto_context';
 import ProyectoReducer from './proyecto_reducer';
-import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL } from '../types/constants';
+import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO } from '../types/constants';
 import { v4 as uuidv4 } from 'uuid';
 
 const ProyectoState = props => {
@@ -57,13 +57,20 @@ const ProyectoState = props => {
             type: VALIDAR_FORMULARIO
         })
     }
-
+// Selecciona el proyecto que el usuario le dio click
     const proyectoActual = proyectoId => {
         dispatch({
             type: PROYECTO_ACTUAL,
             payload: proyectoId
         })
     }
+// Eliminar un proyecto
+const eliminarProyecto = proyectoId => {
+    dispatch({
+        type: ELIMINAR_PROYECTO,
+        payload: proyectoId
+    })
+}
 
     return (
         <ProyectoContext.Provider
@@ -76,7 +83,8 @@ const ProyectoState = props => {
                 obtenerProyectos,
                 agregarProyecto,
                 mostrarError,
-                proyectoActual
+                proyectoActual,
+                eliminarProyecto
             }}
         >
             {props.children}

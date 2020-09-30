@@ -13,11 +13,19 @@ const ListadoTareas = () => {
 
     // extraer proyectos de state inicial
     const proyectoContext = useContext(ProyectoContext);
-    const { proyecto} = proyectoContext;
+
+    const { proyecto, eliminarProyecto} = proyectoContext;
+
     // si no hay proyecto seleccionado
     if(!proyecto) return <h2>Selecciona un proyecto</h2>;
+
     // array destructuring para extraer el proyecto actual
     const [proyectoActual] = proyecto;
+
+// Eliminar un proyecto
+const onClickEliminar = () =>{
+    eliminarProyecto(proyectoActual.id)
+}
 
     return (
         <Fragment>
@@ -36,6 +44,7 @@ const ListadoTareas = () => {
             <button
                type="button"
                className="btn btn-eliminar"
+               onClick={onClickEliminar}
             >
                 Eliminar Proyecto &times;
             </button>
