@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react'
 import Tarea from './tarea'
-import ProyectoContext from '../../context/proyecto_context';
+import ProyectoContext from '../../context/proyectos/proyecto_context';
 
 const ListadoTareas = () => {
 

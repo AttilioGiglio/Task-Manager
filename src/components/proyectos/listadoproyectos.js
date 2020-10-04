@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import ProyectoContext from '../../context/proyecto_context';
+import ProyectoContext from '../../context/proyectos/proyecto_context';
 import { OBTENER_PROYECTO } from '../../types/constants';
 import ProyectoUnitario from './proyecto_unitario';
 
