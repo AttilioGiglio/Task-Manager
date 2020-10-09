@@ -35,7 +35,7 @@ const TareaState = props => {
         })
     }
 
-    const obtenerTareas = tarea => {
+    const agregarTareas = tarea => {
         dispatch({
             type: AGREGAR_TAREA,
             payload: tarea

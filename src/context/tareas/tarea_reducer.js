@@ -1,4 +1,4 @@
-import { TAREAS_PROYECTO } from '../../types/constants';
+import { TAREAS_PROYECTO, AGREGAR_TAREA } from '../../types/constants';
 
 export default (state, action) => {
     switch(action.type) {

@@ -13,7 +13,7 @@ const FormTarea = () => {
     // Array destructuring para extraer el proyecto actual
     const [proyectoActual] = proyecto;
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
         e.preventDefault();
 
         // validar
