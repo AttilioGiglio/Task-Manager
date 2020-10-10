@@ -11,7 +11,6 @@ const ProyectoState = props => {
         { id: 2, nombre: 'intranet' },
         { id: 3, nombre: 'diseño de sitio web' },
         { id: 4, nombre: 'MERN BABY!' },
-        { id: 5, nombre: 'Ohh yeah!' }
     ]
 
 

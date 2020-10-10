@@ -1,18 +1,24 @@
-import { TAREAS_PROYECTO, AGREGAR_TAREA } from '../../types/constants';
+import { TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA } from '../../types/constants';
 
 export default (state, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case TAREAS_PROYECTO:
-        return{
-            ...state,
-            tareasproyecto: state.tareas.filter(tarea => tarea.proyectId === action.payload)
-        }
-        case AGREGAR_TAREA:
-            return{
+            return {
                 ...state,
-                tareas: [...state.tareas, action.payload]
+                tareasproyecto: state.tareas.filter(tarea => tarea.proyectId === action.payload)
+            }
+        case AGREGAR_TAREA:
+            return {
+                ...state,
+                tareas: [...state.tareas, action.payload],
+                errortarea: false
+            }
+        case VALIDAR_TAREA:
+            return {
+                ...state,
+                errortarea: true
             }
         default:
-            return state; 
+            return state;
     }
 }
