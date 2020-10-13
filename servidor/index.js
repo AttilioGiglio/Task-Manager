@@ -1,11 +1,14 @@
 const express = require('express');
-const conectarDB = require('./config/db')
+const conectarDB = require('./config/db');
 
 // crear el servidor
 const app = express();
 
 // Conectar a la base de datos
 conectarDB();
+
+// Habilitar express.json
+app.use(express.json({ extended: true }));
 
 // puerto de la app
 const PORT = process.env.PORT || 4000;
