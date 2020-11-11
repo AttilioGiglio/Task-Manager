@@ -1,2 +1,2 @@
 # ignore note.text file
-notes.txt
+*.txt
