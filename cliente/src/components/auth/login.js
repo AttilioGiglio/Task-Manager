@@ -15,8 +15,6 @@ const Login = () => {
     // registro del usuario cuando inicia sesion
     const onSubmit = (e) => {
         e.preventDefault();
-        
-
         // validacion de campos vacios
         // pasarlo al action del context
     }

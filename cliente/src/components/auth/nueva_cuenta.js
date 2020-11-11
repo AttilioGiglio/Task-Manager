@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NuevaCuenta = () => {
-    const [login, setLogin] = useState({
+    const [user, setUser] = useState({
         nombre: '',
         email: '',
         password: '',
@@ -11,7 +11,7 @@ const NuevaCuenta = () => {
 
     // registro de cada cambio en el valor del input en la property respectiva del obj login
     const onChange = (e) => {
-        setLogin({ ...login, [e.target.name]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value })
     }
 
     // registro del usuario cuando inicia sesion
@@ -25,7 +25,7 @@ const NuevaCuenta = () => {
         // pasarlo al action del context
     }
 
-    const { nombre, email, password, confirmar } = login;
+    const { nombre, email, password, confirmar } = user;
 
     return (
         <div className="form-usuario">
