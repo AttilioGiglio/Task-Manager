@@ -1,23 +1,26 @@
+// Main module where everything is execute
+
+// importing express library
 const express = require('express');
+// importing NOSQL
 const conectarDB = require('./config/db');
 
-// crear el servidor
+// Create nodejs server with expressjs
 const app = express();
 
-// Conectar a la base de datos
+// Activate conection between Backend app and BD
 conectarDB();
 
-// Habilitar express.json
+// Allowed json req and res on JSON.
 app.use(express.json({ extended: true }));
 
-// puerto de la app
+// app port. Where the server is on.
 const PORT = process.env.PORT || 4000;
 
-// importar rutas
-
+// import routes
 app.use('/api/usuarios', require('./routes/usuarios'));
 
-// arrancar la app
+// running the backend app
 app.listen(PORT, () => {
     console.log(`el servidor esta funcionando en el puerto ${PORT}`)
 })
