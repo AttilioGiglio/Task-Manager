@@ -1,2 +1,2 @@
-# ignore all .a files
-**/notes.txt
+# ignore note.text file
+notes.txt
