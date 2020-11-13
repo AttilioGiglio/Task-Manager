@@ -1,8 +1,10 @@
 {
   "name": "merntaskservidor",
   "version": "1.0.0",
-  "description": "mern_api_for_task_manager",
+  "description": "MERN API para tasks",
   "main": "index.js",
+  "author": "attilio_giglio",
+  "license": "ISC",
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
@@ -11,12 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/AttilioGiglio/Task-Manager.git"
   },
-  "author": "\"attilio_giglio\"",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AttilioGiglio/Task-Manager/issues"
-  },
-  "homepage": "https://github.com/AttilioGiglio/Task-Manager#readme",
   "devDependencies": {
     "nodemon": "^2.0.4"
   },

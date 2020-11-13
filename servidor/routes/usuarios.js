@@ -3,11 +3,16 @@ const express = require('express');
 // each module backend route import express.router
 const router = express.Router();
 
-const usuario_controller = require('../controllers/usuario_controller');
+const usuarioController = require('../controllers/usuario_controller');
 
 // route to create a user
-router.post('/', () => {
-    usuario_controller.create_usuario
-});
+router.post('/',
+    usuarioController.crearUsuario
+)
+// router.get('/api/usuarios', (req, res) => {
+//     res.json({
+//         status:'API WORLD'
+//     })
+// });
 
 module.exports = router;

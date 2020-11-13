@@ -20,9 +20,9 @@ const UserSchema = mongoose.Schema({
         trim: true
     },
     register: {
-        type:Date,
+        type: Date,
         default: Date.now()
     }
 });
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('Usuario', UserSchema)
