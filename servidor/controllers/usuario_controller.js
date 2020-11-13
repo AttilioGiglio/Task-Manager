@@ -1,8 +1,14 @@
-const Usuario = require('../models/usuario')
+const Usuario = require('../models/usuario');
+const bcryptjs = require('bcryptjs');
+const { validationResult } = require('express-validator')
 
 exports.crearUsuario = async (req, res) => {
 
     const { email, password } = req.body;
+    const errores = validationResult(req);
+    if( !errores.isEmpty() ){
+        return res.status(400).json({ errores:errores.array() });
+    }
 
     try{
 
@@ -15,6 +21,10 @@ exports.crearUsuario = async (req, res) => {
         // create new user
         user = new Usuario(req.body);
         
+        // Hashing password
+        const salt = await bcryptjs.genSalt(10);
+        user.password = await bcryptjs.hash(password, salt);
+
         // save new user
         await user.save();
 
