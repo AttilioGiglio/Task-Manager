@@ -17,10 +17,6 @@ app.use(express.json({ extended: true }));
 // app port. Where the server is on.
 const PORT = process.env.PORT || 4000;
 
-// app.get('/', (req,res) => {
-//     res.send('Hola Mundo')
-// });
-
 // import routes
 app.use('/api/usuarios', require('./routes/usuarios'));
 
