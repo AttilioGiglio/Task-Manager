@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 4000;
 
 // import routes
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/auth', require('./routes/auth'));
 
 // running the backend app
 app.listen(PORT, () => {
