@@ -15,4 +15,10 @@ router.post('/',
     tareaController.crearTarea
 )
 
+router.get('/',
+    auth,
+    tareaController.obtenerTarea
+)
+
+
 module.exports = router;

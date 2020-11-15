@@ -3,7 +3,6 @@ const Proyecto = require('../models/proyecto');
 const { validationResult } = require('express-validator')
 
 // Crea un nueva tarea
-
 exports.crearTarea = async (req, res) => {
     // Revisar si hay errores
     const errores = validationResult(req);
@@ -30,4 +29,26 @@ exports.crearTarea = async (req, res) => {
 
     }
 
+}
+
+// Obtener las tareas
+exports.obtenerTarea = async(req,res) => {
+    try {
+    const  { proyecto } = req.body;
+    const existeProyecto = await Proyecto.findById(proyecto);
+    if(!existeProyecto) {
+        return res.status(404).json({msg: 'Proyecto no encontrado'})
+    }
+    // Revisar si el proyecto actual pertenece al usuario autenticado
+    if (existeProyecto.creator.toString() !== req.user.id) {
+        return res.status(401).json({ msg: 'No Autorizado' });
+    }
+    //  Obtener las tareas por projecto
+    const tareas = await Tarea.find({ proyecto })
+    res.json({ tareas });
+}
+catch(error) {
+    console.log(error);
+    res.status(500).send('Hubo un error');
+}
 }
