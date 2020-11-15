@@ -1,4 +1,4 @@
-// Main module where everything is execute
+// Index.js is the main module where everything is execute
 
 // importing express library
 const express = require('express');
@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 4000;
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/proyectos', require('./routes/proyectos'));
+app.use('/api/tareas', require('./routes/tareas'));
 
 // running the backend app
 app.listen(PORT, () => {
