@@ -5,11 +5,11 @@ module.exports = function(req, res, next){
     const token = req.header('x-auth-token');
     // revisar si no hay token
     if(!token) {
-        return res.status(401).json({msg: 'No ha Token, permiso no valido'})
+        return res.status(401).json({msg: 'No hay Token, permiso no valido'})
     }
     // validar el token
     try{
-        const cifrado = jwt.verify(token, process.env.secreta);
+        const cifrado = jwt.verify(token, process.env.SECRETA);
         req.user = cifrado.user;
         next()
     }
