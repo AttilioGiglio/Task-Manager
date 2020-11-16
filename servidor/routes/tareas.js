@@ -20,5 +20,9 @@ router.get('/',
     tareaController.obtenerTarea
 )
 
+router.put('/:id',
+    auth,
+    tareaController.actualizarTarea
+)
 
 module.exports = router;
