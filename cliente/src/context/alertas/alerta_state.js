@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import alertaReducer from './alerta_reducer';
 import alertaContext from './alerta_context';
-import { MOSTRAR_ALERTA, OCULTAR_ALERTA } from '../../types';
+import { MOSTRAR_ALERTA, OCULTAR_ALERTA } from '../../types/constants';
 
 const AlertaState = props => {
     const initialState = {
