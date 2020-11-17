@@ -1,12 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import alertaContext from '../../context/alertas/alerta_context'
+import alertaContext from '../../context/alertas/alerta_context';
+import authContext from '../../context/autenticacion/auth_context';
+import AuthContext from '../../context/autenticacion/auth_context';
 
 const NuevaCuenta = () => {
 
     // extraer los valores del context
     const alertContext = useContext(alertaContext);
     const { alerta, mostrarAlerta } = alertContext
+
+
+    //  extraer los valores del modulo al context
+    const AuthContext = useContext(AuthContext);
+    const { registrarUsuario } = authContext; 
 
     // state para iniciar sesion
     const [user, setUser] = useState({
@@ -43,6 +50,11 @@ const NuevaCuenta = () => {
             return;
         }
         // pasarlo al action del context
+        registrarUsuario({ 
+            nombre,
+            email,
+            password
+         });
     }
 
 
