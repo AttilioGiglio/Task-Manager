@@ -5,11 +5,16 @@ const express = require('express');
 // importing NOSQL
 const conectarDB = require('./config/db');
 
+const cors = require('cors');
+
 // Create nodejs server with expressjs
 const app = express();
 
 // Activate conection between Backend app and BD
 conectarDB();
+
+// habilitar cors
+app.use(cors());
 
 // Allowed json req and res on JSON.
 app.use(express.json({ extended: true }));
