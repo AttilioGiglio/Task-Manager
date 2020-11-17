@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import alertaContext from '../../context/alertas/alerta_context';
 import authContext from '../../context/autenticacion/auth_context';
-import AuthContext from '../../context/autenticacion/auth_context';
 
 const NuevaCuenta = () => {
 
@@ -12,18 +11,18 @@ const NuevaCuenta = () => {
 
 
     //  extraer los valores del modulo al context
-    const AuthContext = useContext(AuthContext);
-    const { registrarUsuario } = authContext; 
+    const AuthContext = useContext(authContext);
+    const { registrarUsuario } = AuthContext; 
 
     // state para iniciar sesion
     const [user, setUser] = useState({
-        nombre: '',
+        name: '',
         email: '',
         password: '',
         confirmar: ''
     })
 
-    const { nombre, email, password, confirmar } = user;
+    const { name, email, password, confirmar } = user;
 
     // registro de cada cambio en el valor del input en la property respectiva del obj login
     const onChange = (e) => {
@@ -35,7 +34,7 @@ const NuevaCuenta = () => {
         e.preventDefault();
 
         // validacion de campos vacios
-        if(nombre.trim() === '' || email.trim() === '' || password.trim() === '' || confirmar.trim() === ''){
+        if(name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmar.trim() === ''){
             mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
             return;
         }
@@ -51,7 +50,7 @@ const NuevaCuenta = () => {
         }
         // pasarlo al action del context
         registrarUsuario({ 
-            nombre,
+            name,
             email,
             password
          });
@@ -69,13 +68,13 @@ const NuevaCuenta = () => {
                     onSubmit={onSubmit}
                 >
                     <div className="campo-form">
-                        <label htmlFor="nombre">Nombre</label>
+                        <label htmlFor="name">Nombre</label>
                         <input
                             type="text"
-                            id="nombre"
-                            name="nombre"
+                            id="name"
+                            name="name"
                             placeholder="Tu Nombre"
-                            value={nombre}
+                            value={name}
                             onChange={onChange}
                         />
                     </div>
