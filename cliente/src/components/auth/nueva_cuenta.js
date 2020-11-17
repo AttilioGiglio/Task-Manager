@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import alertaContext from '../../context/alertas/alerta_context';
 import authContext from '../../context/autenticacion/auth_context';
 
-const NuevaCuenta = () => {
+const NuevaCuenta = (props) => {
 
     // extraer los valores del context
     const alertContext = useContext(alertaContext);
@@ -12,7 +12,19 @@ const NuevaCuenta = () => {
 
     //  extraer los valores del modulo al context
     const AuthContext = useContext(authContext);
-    const { registrarUsuario } = AuthContext; 
+    const { registrarUsuario, mensaje, autenticado } = AuthContext; 
+
+    // En caso de que el usuario se haya autenticado o registrado o sea un registro duplicado
+    useEffect(() => {
+        if(autenticado){
+            props.history.push('/proyectos');
+        }
+        if(mensaje){
+            mostrarAlerta(mensaje.msg, mensaje.categoria);
+        }
+        
+
+    }, [mensaje, autenticado])
 
     // state para iniciar sesion
     const [user, setUser] = useState({
