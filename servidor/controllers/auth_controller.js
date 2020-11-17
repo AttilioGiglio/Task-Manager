@@ -48,3 +48,13 @@ exports.autenticarUsuario = async (req, res) => {
         res.status(400).send('Got an Error :(');
     }
 }    
+
+exports.autenticarUsuario = async (req, res) => {
+    try{
+        const usuario = await Usuario.findById(req.user.id);
+        res.json({usuario});
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({msg: 'Hubo un error'})
+    }
