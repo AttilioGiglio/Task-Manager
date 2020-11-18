@@ -8,6 +8,7 @@ import TareaState from './context/tareas/tarea_state';
 import AlertaState from './context/alertas/alerta_state';
 import AuthState from './context/autenticacion/auth_state';
 import tokenAuth from './config/token';
+import RutaPrivada from './components/routes/route'
 
 function App() {
 
@@ -26,7 +27,7 @@ if(token) {
               <Switch>
                 <Route exact path='/' component={login} />
                 <Route exact path='/nueva-cuenta' component={NuevaCuenta} />
-                <Route exact path='/proyectos' component={Proyectos} />
+                <RutaPrivada exact path='/proyectos' component={Proyectos} />
               </Switch>
             </Router>
           </AuthState>
