@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import alertaContext from '../../context/alertas/alerta_context';
 import authContext from '../../context/autenticacion/auth_context';
 
-const Login = () => {
+const Login = (props) => {
 
     // extraer valores del context 
     const AlertaContext = useContext(alertaContext);
     const { alerta, mostrarAlerta } = AlertaContext
     const AuthContext = useContext(authContext);
-    const { iniciarSesion } = AuthContext;
+    const { iniciarSesion, autenticado, mensaje } = AuthContext;
 
     //  State para iniciar sesión
     const [login, setLogin] = useState({
@@ -35,7 +35,15 @@ const Login = () => {
         iniciarSesion({email, password});
     }
 
-
+   // En caso de que el usuario o password no exista
+   useEffect(() => {
+    if(autenticado){
+        props.history.push('/proyectos');
+    }
+    if(mensaje){
+        mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+}, [mensaje, autenticado])
 
     return (
         <div className="form-usuario">
