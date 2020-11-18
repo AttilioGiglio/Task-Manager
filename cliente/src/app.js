@@ -7,8 +7,15 @@ import ProyectoState from './context/proyectos/proyecto_state';
 import TareaState from './context/tareas/tarea_state';
 import AlertaState from './context/alertas/alerta_state';
 import AuthState from './context/autenticacion/auth_state';
+import tokenAuth from './config/token';
 
 function App() {
+
+//  checking if I got the the token access
+const token = localStorage.getItem('token');
+if(token) {
+  tokenAuth();
+}
 
   return (
     <ProyectoState>
