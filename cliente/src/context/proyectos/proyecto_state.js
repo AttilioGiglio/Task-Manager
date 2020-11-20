@@ -2,15 +2,16 @@ import React, { useReducer } from 'react';
 import ProyectoContext from './proyecto_context';
 import ProyectoReducer from './proyecto_reducer';
 import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO } from '../../types/constants';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
+import clienteAxios from '../../config/axios';
 
 const ProyectoState = props => {
 
     const proyectos = [
-        { id: 1, nombre: 'tienda' },
-        { id: 2, nombre: 'intranet' },
-        { id: 3, nombre: 'diseño de sitio web' },
-        { id: 4, nombre: 'MERN BABY!' },
+        // { id: 1, nombre: 'tienda' },
+        // { id: 2, nombre: 'intranet' },
+        // { id: 3, nombre: 'diseño de sitio web' },
+        // { id: 4, nombre: 'MERN BABY!' },
     ]
 
 
@@ -32,14 +33,20 @@ const ProyectoState = props => {
     }
 
     // agregar nuevo proyecto
-    const agregarProyecto = proyecto => {
-        proyecto.id = uuidv4();
-
-        // insertar el proyecto del state
-        dispatch({
-            type: AGREGAR_PROYECTO,
-            payload: proyecto
-        })
+    const agregarProyecto = async proyecto => {
+        // resultado.id = uuidv4();
+        try {
+            const resultado = await clienteAxios.post('/api/proyectos', proyecto);
+            console.log(resultado)
+            // insertar el proyecto del state
+            dispatch({
+                type: AGREGAR_PROYECTO,
+                payload: resultado.data
+            })
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     // obtener proyectos
@@ -56,20 +63,20 @@ const ProyectoState = props => {
             type: VALIDAR_FORMULARIO
         })
     }
-// Selecciona el proyecto que el usuario le dio click
+    // Selecciona el proyecto que el usuario le dio click
     const proyectoActual = proyectoId => {
         dispatch({
             type: PROYECTO_ACTUAL,
             payload: proyectoId
         })
     }
-// Eliminar un proyecto
-const eliminarProyecto = proyectoId => {
-    dispatch({
-        type: ELIMINAR_PROYECTO,
-        payload: proyectoId
-    })
-}
+    // Eliminar un proyecto
+    const eliminarProyecto = proyectoId => {
+        dispatch({
+            type: ELIMINAR_PROYECTO,
+            payload: proyectoId
+        })
+    }
 
     return (
         <ProyectoContext.Provider
