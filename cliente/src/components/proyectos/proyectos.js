@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import authContext from '../../context/autenticacion/auth_context';
 import Barra from '../layout/barra';
 import Sidebar from '../layout/sidebar';
@@ -14,6 +14,8 @@ const Proyectos = () => {
 
     useEffect(() => {
         usuarioAutenticado()
+        
+        //  eslint-disable-next-line
     },[])
 
     return (
