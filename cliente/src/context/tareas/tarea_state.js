@@ -26,23 +26,23 @@ const TareaState = props => {
                 payload: resultado.data.tareas
             })
         }catch(error){
-            console.log(error)
+            // console.log(error)
         }
         
         
     }
 
     const agregarTarea = async(tarea) => {
-        console.log(tarea)
-        const resultado = await clienteAxios.post('/api/tareas', tarea);
-        console.log(resultado);
+        // console.log(tarea)
+        await clienteAxios.post('/api/tareas', tarea);
+        // console.log(resultado);
         try{ 
             dispatch({
             type: AGREGAR_TAREA,
             payload: tarea
         })
     } catch(error){
-        console.log(error)
+        // console.log(error)
     }
     }
 
@@ -85,13 +85,13 @@ const TareaState = props => {
 const actualizarTarea = async (tarea) => {
  try{
     const resultado = await clienteAxios.put(`/api/tareas/${tarea._id}`, tarea)
-    console.log(resultado)
+    // console.log(resultado)
     dispatch({
         type: ACTUALIZAR_TAREA,
         payload: resultado.data.tarea
     })
  }catch(error){
-     console.log(error);
+    //  console.log(error);
  }
 }
 

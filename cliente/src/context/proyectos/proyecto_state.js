@@ -30,7 +30,7 @@ const ProyectoState = props => {
         // resultado.id = uuidv4();
         try {
             const resultado = await clienteAxios.post('/api/proyectos', proyecto);
-            console.log(resultado)
+            // console.log(resultado)
             // insertar el proyecto del state
             dispatch({
                 type: AGREGAR_PROYECTO,
