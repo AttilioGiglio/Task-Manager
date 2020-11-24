@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import TareaContext from './tarea_context';
 import TareaReducer from './tarea_reducer';
-import { TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA, ELIMINAR_TAREA, ESTADO_TAREA, TAREA_ACTUAL, ACTUALIZAR_TAREA, LIMPIAR_TAREA } from '../../types/constants';
+import { TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA, ELIMINAR_TAREA, TAREA_ACTUAL, ACTUALIZAR_TAREA, LIMPIAR_TAREA } from '../../types/constants';
 import clienteAxios from '../../config/axios'
 
 const TareaState = props => {
@@ -65,13 +65,13 @@ const TareaState = props => {
         }
     }
 
-    // CAMBIAR ESTADO DE TAREA
-    const cambiarEstadoTarea = tarea => {
-        dispatch({
-            type: ESTADO_TAREA,
-            payload: tarea
-        })
-    }
+    // // CAMBIAR ESTADO DE TAREA, uso sin backend
+    // const cambiarEstadoTarea = tarea => {
+    //     dispatch({
+    //         type: ESTADO_TAREA,
+    //         payload: tarea
+    //     })
+    // }
     
     // Extrae una tarea para edicion 
     const guardarTareaActual = tarea => {
@@ -82,11 +82,17 @@ const TareaState = props => {
     }
 
     // edita o modifica una tarea
-const actualizarTarea = tarea => {
+const actualizarTarea = async (tarea) => {
+ try{
+    const resultado = await clienteAxios.put(`/api/tareas/${tarea._id}`, tarea)
+    console.log(resultado)
     dispatch({
         type: ACTUALIZAR_TAREA,
-        payload: tarea
+        payload: resultado.data.tarea
     })
+ }catch(error){
+     console.log(error);
+ }
 }
 
 // elimina la tarea seleccionada
@@ -105,7 +111,6 @@ const limpiarTarea = () => {
             agregarTarea,
             validarTarea,
             eliminarTarea,
-            cambiarEstadoTarea,
             guardarTareaActual,
             actualizarTarea,
             limpiarTarea

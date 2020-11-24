@@ -74,12 +74,9 @@ exports.actualizarTarea = async(req,res) => {
     // crear un obj. con la nueva info
     const nuevaTarea = {};
 
-    if(name){
-        nuevaTarea.name = name;
-    }
-    if(state){
-        nuevaTarea.state = state;
-    }
+    nuevaTarea.name = name;
+    nuevaTarea.state = state;
+    
     // guardar la tarea 
     tarea = await Tarea.findOneAndUpdate({_id: req.params.id }, nuevaTarea, { new:true });
     res.json({ tarea })
