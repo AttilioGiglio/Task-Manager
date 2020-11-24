@@ -24,7 +24,7 @@ const NuevoProyecto = () => {
         e.preventDefault();
 
         // validar el proyecto
-        if(nombre==''){
+        if(nombre===''){
             mostrarError();
             return;
         }

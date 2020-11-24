@@ -1,20 +1,18 @@
 import React, { useReducer } from 'react';
 import ProyectoContext from './proyecto_context';
 import ProyectoReducer from './proyecto_reducer';
-import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO } from '../../types/constants';
+import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO, PROYECTO_ERROR } from '../../types/constants';
 // import { v4 as uuidv4 } from 'uuid';
 import clienteAxios from '../../config/axios';
 
 const ProyectoState = props => {
 
-    const proyectos = []
-
-
     const initialState = {
         proyectos: [],
         formulario: false,
         errorFormulario: false,
-        proyecto: null
+        proyecto: null,
+        mensaje: null
     }
 
     // dispatch para ejecutar acciones 
@@ -39,8 +37,15 @@ const ProyectoState = props => {
                 payload: resultado.data
             })
         }
-        catch (error) {
-            console.log(error)
+        catch(error){
+            const alert = {
+                msg: 'Hubo un error',
+                categoria: 'alerta-error'
+            }
+            dispatch({
+                type: PROYECTO_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -52,9 +57,16 @@ const ProyectoState = props => {
             type: OBTENER_PROYECTO,
             payload: resultado.data.proyectos
         })
-     } catch(error) {
-         console.log(error)
-     }
+     }    catch(error){
+        const alert = {
+            msg: 'Hubo un error',
+            categoria: 'alerta-error'
+        }
+        dispatch({
+            type: PROYECTO_ERROR,
+            payload: alert
+        })
+    }
     }
 
     // valida el formulario por errores
@@ -80,7 +92,14 @@ const ProyectoState = props => {
             })
         }
         catch(error){
-            console.log(error);
+            const alert = {
+                msg: 'Hubo un error',
+                categoria: 'alerta-error'
+            }
+            dispatch({
+                type: PROYECTO_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -91,6 +110,7 @@ const ProyectoState = props => {
                 formulario: state.formulario,
                 errorFormulario: state.formulario,
                 proyecto: state.proyecto,
+                mensaje: state.mensaje,
                 mostrarFormulario,
                 obtenerProyectos,
                 agregarProyecto,

@@ -17,7 +17,7 @@ const Barra = () => {
             className='btn btn-blank cerrar-sesion'
             onClick={() => cerrarSesion()}
             >
-                <a href=''> Cerrar Sesion</a>
+                <a href='/#'> Cerrar Sesion</a>
             </button>
             </nav>
         </header>

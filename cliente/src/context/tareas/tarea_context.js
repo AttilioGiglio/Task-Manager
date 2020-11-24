@@ -1,5 +1,5 @@
-import React, { createContext } from 'react'
+import React from 'react'
 
-const TareaContext = createContext();
+const TareaContext = React.createContext();
 
 export default TareaContext

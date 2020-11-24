@@ -1,8 +1,8 @@
-import React, { createContext } from 'react';
+import React from 'react';
 
 
 
-const ProyectoContext = createContext();
+const ProyectoContext = React.createContext();
 
 
 

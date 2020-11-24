@@ -43,7 +43,7 @@ const Login = (props) => {
     if(mensaje){
         mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-}, [mensaje, autenticado])
+}, [mensaje, autenticado, props.history, mostrarAlerta])
 
     return (
         <div className="form-usuario">

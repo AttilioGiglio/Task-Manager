@@ -1,7 +1,6 @@
-import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, PROYECTO_ACTUAL, VALIDAR_FORMULARIO, ELIMINAR_PROYECTO } from '../../types/constants';
+import { AGREGAR_PROYECTO, FORMULARIO_PROYECTO, OBTENER_PROYECTO, PROYECTO_ACTUAL, VALIDAR_FORMULARIO, ELIMINAR_PROYECTO, PROYECTO_ERROR } from '../../types/constants';
 
 export default (state, action) => {
-
     switch (action.type) {
         case FORMULARIO_PROYECTO:
             return {
@@ -34,8 +33,14 @@ export default (state, action) => {
             return {
                 ...state,
                 proyectos: state.proyectos.filter(proyecto => proyecto._id !== action.payload),
-                proyecto:null
+                proyecto: null
             }
+        case PROYECTO_ERROR:
+            return {
+                ...state,
+                mensaje: action.payload
+            }
+        default:
+            return state;
     }
-    console.log(state)
 }

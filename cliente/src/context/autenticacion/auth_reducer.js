@@ -30,22 +30,6 @@ export default (state, action) => {
                 mensaje: action.payload,
                 cargando: false
             }
-        case LOGIN_EXITOSO:
-            return {
-
-            }
-        case LOGIN_EXITOSO:
-            return {
-
-            }
-        case LOGIN_ERROR:
-            return {
-
-            }
-        case CERRAR_SESION:
-            return {
-
-            }
         default:
             return state;
     }

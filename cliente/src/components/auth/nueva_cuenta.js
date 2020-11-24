@@ -22,7 +22,7 @@ const NuevaCuenta = (props) => {
         if(mensaje){
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
-    }, [mensaje, autenticado])
+    }, [mensaje, autenticado, props.history, mostrarAlerta])
 
     // state para iniciar sesion
     const [user, setUser] = useState({
