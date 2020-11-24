@@ -34,7 +34,9 @@ exports.crearTarea = async (req, res) => {
 // Obtener las tareas
 exports.obtenerTarea = async(req,res) => {
     try {
-    const  { proyecto } = req.body;
+    // como estamos usando params se tiene que usar req.query, en lugar de req.body 
+    const { proyecto } = req.query;
+    // console.log(req.query)
     const existeProyecto = await Proyecto.findById(proyecto);
     if(!existeProyecto) {
         return res.status(404).json({msg: 'Proyecto no encontrado'})
