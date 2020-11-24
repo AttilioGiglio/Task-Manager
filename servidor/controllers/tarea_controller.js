@@ -93,7 +93,7 @@ catch(error) {
 // Eliminar una tarea
 exports.eliminarTarea = async(req,res) => {
     try {
-    const  { proyecto } = req.body;
+    const  { proyecto } = req.query;
     // si la tarea existe o no
     let tarea = await Tarea.findById(req.params.id)
     if(!tarea) {
